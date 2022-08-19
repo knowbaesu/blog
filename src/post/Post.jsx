@@ -18,6 +18,12 @@ export default function Post() {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
           Perferendis aut nihil doloremque placeat quidem architecto et, 
           accusantium eaque dolorum maiores excepturi sunt commodi 
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+          Perferendis aut nihil doloremque placeat quidem architecto et, 
+          accusantium eaque dolorum maiores excepturi sunt commodi 
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+          Perferendis aut nihil doloremque placeat quidem architecto et, 
+          accusantium eaque dolorum maiores excepturi sunt commodi 
         </p>
     </div>
   )
