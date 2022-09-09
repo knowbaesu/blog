@@ -12,11 +12,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={user ? <Home /> : <Register />} />
-        <Route path="/" element={<Login />} />
-        <Route path="/" element={<Write />} />
-        <Route path="/" element={<Settings />} />
-        <Route path="/" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
+        <Route path="/register" element={user ? <Home /> : <Register />} />
+        <Route path="/login" element={user ? <Home /> : <Login />} />
+        <Route path="/write" element={user ? <Write /> : <Register />} />
+        <Route path="/settings" element={user ? <Settings /> : <Register />} />
+        <Route path="/post/:postId" element={<Single />} />
       </Routes>
     </BrowserRouter>
   );
