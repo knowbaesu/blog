@@ -11,6 +11,7 @@ function App() {
   const user = false;
   return (
     <BrowserRouter>
+      <Topbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/register" element={user ? <Home /> : <Register />} />
