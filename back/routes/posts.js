@@ -69,7 +69,7 @@ router.get("/:id", async (req, res) => {
 });
 //Get All Posts
 
-router.get("/?user", async (req, res) => {
+router.get("/", async (req, res) => {
   const username = req.query.user;
   const catname = req.query.cat;
   try {
@@ -83,7 +83,7 @@ router.get("/?user", async (req, res) => {
         },
       });
     } else {
-      posts = Post.findById();
+      posts = await Post.find();
     }
     res.status(200).json(posts);
   } catch (err) {
