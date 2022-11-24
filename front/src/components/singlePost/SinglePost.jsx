@@ -1,15 +1,32 @@
 import "./singlePost.css"
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function SinglePost() {
+  const location = useLocation()
+  const path = location.pathname.split("/")[2]
+  const [post, setPost] = useState({})
+
+
+  useEffect(()=>{
+const getPost = async ()=>{
+  const res = await axios.get("/posts/"+ path)
+  setPost(res.data)
+}
+  getPost()
+  }, [path])
   return (
     <div className="singlePost">
         <div className="singlePostWrapper">
-            <img src="https://www.fcbarcelonanoticias.com/uploads/s1/12/48/98/1/jose-mourinho.jpeg?mrf-size=m" alt="" className="singlePostImg" 
-            />
+          {post.photo && (
+          <img src={post.photo} alt="" className="singlePostImg" 
+          />
+          )}
             <h1 className="singlePostTitle">
-            Lorem ipsum dolor sit.
+            {post.title}
                 <div div className="singlePostEdit">  
                 <ModeEditIcon className="singlePostIcon one"/>
                 <DeleteIcon className="singlePostIcon two"/>
@@ -18,18 +35,10 @@ export default function SinglePost() {
             <div className="singlePostInfo">
                 <span className="singlePostAuthor">Autor: <b>Jisoo</b>
                 </span>
-                <span className="singlePostDate">1 hour ago</span>
+                <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
             </div>   
             <p className="singlePostDesc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores excepturi omnis cumque aliquid magni 
-            molestias harum veritatis quod repellat? Est molestias 
-            ad voluptas quibusdam nam aliquid perspiciatis nesciunt voluptatibus.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores excepturi omnis cumque aliquid magni 
-            molestias harum veritatis quod repellat? Est molestias 
-            ad voluptas quibusdam nam aliquid perspiciatis nesciunt voluptatibus.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores excepturi omnis cumque aliquid magni 
-            molestias harum veritatis quod repellat? Est molestias 
-            ad voluptas quibusdam nam aliquid perspiciatis nesciunt voluptatibus.
+            {post.desc}
             </p>
         </div>
     </div>

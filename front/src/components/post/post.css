@@ -54,3 +54,8 @@
     -webkit-box-orient: vertical;
 }
 
+.link {
+    text-decoration-line: none;
+    color: black;
+}
+
