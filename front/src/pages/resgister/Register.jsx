@@ -1,6 +1,10 @@
 import "./register.css";
+import { useState } from "react";
 
 export default function register() {
+  const [usename, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   return (
     <div className="register">
       <span className="registerTitle">Register</span>
