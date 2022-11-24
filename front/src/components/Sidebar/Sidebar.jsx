@@ -5,6 +5,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 export default function Sidebar() {
@@ -32,7 +33,9 @@ export default function Sidebar() {
           <span className="sidebarTitle">CATEGORIES</span>
           <ul className="sidebarList">
             {cats.map((c)=>(
-              <li className="sidebarListItem">{c.name}</li> 
+              <Link to={`/?cat=${c.name}`} className="link">
+              <li className="sidebarListItem">{c.name}</li>
+              </Link> 
             ))}
             
           </ul>

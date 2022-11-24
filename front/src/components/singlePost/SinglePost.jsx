@@ -4,6 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function SinglePost() {
   const location = useLocation()
@@ -33,7 +34,10 @@ const getPost = async ()=>{
                 </div>
             </h1>
             <div className="singlePostInfo">
-                <span className="singlePostAuthor">Autor: <b>Jisoo</b>
+                <span className="singlePostAuthor">Autor: 
+                <Link to={`/?user=${post.username}`} className="link">
+                <b>{post.username}</b>
+                </Link>
                 </span>
                 <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
             </div>   
