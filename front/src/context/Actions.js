@@ -1,5 +1,5 @@
 export const LoginStart = (userCredentials) = ({
-    type:"Login_start"
+    type:"LOGIN_START",
 })
 
 export const LoginSucceess = (user)=> ({
