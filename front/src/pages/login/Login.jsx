@@ -20,10 +20,10 @@ export default function Login() {
       })
       dispatch({type:"LOGIN_SUCCESS", payload: res.data})
     }catch(err){
-      dispatch({type:"LOGIN_FAILUR"})
+      dispatch({type:"LOGIN_FAILURE"})
     }
   }
-  
+
   return (
   
     <div className="login">
@@ -41,7 +41,10 @@ export default function Login() {
         type="password"
         ref={passwordRef}
         />
-        <button className="loginButton" type="submit">Login</button>
+        <button className="loginButton" 
+        type="submit"
+        disabled={isFetching}
+        >Login</button>
       </form>
       <button className="registerButton">
         <Link className="link" to="/register">Register</Link>

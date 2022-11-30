@@ -5,9 +5,15 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
+import { useContext } from "react";
 
 export default function Topbar() {
-  const user = false;
+  const { user, dispatch }= useContext(Context);
+  const handleLogout = ()=>{
+    dispatch({type: "LOGOUT"})
+  }
+
   return (
     <div className="top">
       <div className="topLeft">
@@ -38,14 +44,14 @@ export default function Topbar() {
               WRITE
             </Link>
           </li>
-          <li className="topListItem">{user && "LOGOUT"}</li>
+          <li className="topListItem" onClick={handleLogout}>{user && "LOGOUT"}</li>
         </ul>
       </div>
       <div className="topRight">
         {user ? (
           <img
             className="topImg"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCGSnYM5Hb4qoCWl5LUJ-LS5OGYWFdYeJSzg&usqp=CAU"
+            src={user.profilePic}
             alt=""
           />
         ) : (
