@@ -2,15 +2,17 @@ import "./singlePost.css"
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
 
 export default function SinglePost() {
   const location = useLocation()
   const path = location.pathname.split("/")[2]
   const [post, setPost] = useState({})
   const PF = "http://localhost:5000/images/"
+  const {user} = useContext(Context)
 
   useEffect(()=>{
 const getPost = async ()=>{
@@ -28,10 +30,12 @@ const getPost = async ()=>{
           )}
             <h1 className="singlePostTitle">
             {post.title}
+            {post.username === user.username && (
                 <div div className="singlePostEdit">  
                 <ModeEditIcon className="singlePostIcon one"/>
                 <DeleteIcon className="singlePostIcon two"/>
                 </div>
+            )}
             </h1>
             <div className="singlePostInfo">
                 <span className="singlePostAuthor">Autor: 
