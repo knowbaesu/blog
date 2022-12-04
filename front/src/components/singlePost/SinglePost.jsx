@@ -15,7 +15,7 @@ export default function SinglePost() {
   const {user} = useContext(Context)
   const [title, setTitle] = useState("")
   const [desc, setDesc] = useState("")
-  const [update, setUpdate] = useState("")
+  const [updateMode, setUpdateMode] = useState(false)
 
   useEffect(()=>{
 const getPost = async ()=>{
@@ -36,7 +36,7 @@ const getPost = async ()=>{
             {post.username === user.username && (
                 <div div className="singlePostEdit">  
                 <ModeEditIcon className="singlePostIcon one"/>
-                <DeleteIcon className="singlePostIcon two"/>
+                <DeleteIcon className="singlePostIcon two" onClick={()=>setUpdateMode(true)}/>
                 </div>
             )}
             </h1>
